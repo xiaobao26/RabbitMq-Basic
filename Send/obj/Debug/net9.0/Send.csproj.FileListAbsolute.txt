@@ -17,3 +17,6 @@
 /Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/obj/Debug/net9.0/Send.pdb
 /Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/obj/Debug/net9.0/Send.genruntimeconfig.cache
 /Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/obj/Debug/net9.0/ref/Send.dll
+/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/bin/Debug/net9.0/RabbitMQ.Stream.Client.dll

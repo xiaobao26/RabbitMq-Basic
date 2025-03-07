@@ -17,3 +17,6 @@
 /Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/obj/Debug/net9.0/Receive.pdb
 /Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/obj/Debug/net9.0/Receive.genruntimeconfig.cache
 /Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/obj/Debug/net9.0/ref/Receive.dll
+/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/bin/Debug/net9.0/RabbitMQ.Stream.Client.dll

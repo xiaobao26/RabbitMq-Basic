@@ -1,17 +1,32 @@
 ﻿using System.Text;
-using RabbitMQ.Client;
+using RabbitMQ.Stream.Client;
+using RabbitMQ.Stream.Client.Reliable;
 
+var streamSystem = await StreamSystem.Create(new StreamSystemConfig());
+var stream = "stream-offset-tracking-dotnet";
+await streamSystem.CreateStream(new StreamSpec(stream));
 
-var factory = new ConnectionFactory { HostName = "localhost" };
-using var connection = await factory.CreateConnectionAsync();
-using var channel = await connection.CreateChannelAsync();
+var messageCount = 100;
+var confirmedCde = new CountdownEvent(messageCount);
+var producer = await Producer.Create(new ProducerConfig(streamSystem, "stream-offset-tracking-dotnet")
+{
+    ConfirmationHandler = async confirmation =>
+    {
+        if (confirmation.Status == ConfirmationStatus.Confirmed)
+        {
+            confirmedCde.Signal();
+        }
+        await Task.CompletedTask.ConfigureAwait(false);
+    }
+});
 
-await channel.QueueDeclareAsync(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
-const string message = "Hello World!";
-var body = Encoding.UTF8.GetBytes(message);
+Console.WriteLine("Publishing {0} messages...", messageCount);
+for (int i = 0; i < messageCount; i++) {
+    var body = i == messageCount - 1 ? "marker" : "hello";
+    await producer.Send(new Message(Encoding.UTF8.GetBytes(body)));
+}
 
-await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "hello", body: body);
-Console.WriteLine($" [x] Sent {message}");
-
-Console.WriteLine(" Press [enter] to exit.");
-Console.ReadLine();
+confirmedCde.Wait();
+Console.WriteLine("Messages confirmed.");
+await producer.Close();
+await streamSystem.Close();

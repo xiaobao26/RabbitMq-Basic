@@ -46,6 +46,10 @@
             "RabbitMQ.Client": {
               "target": "Package",
               "version": "[7.1.1, )"
+            },
+            "RabbitMQ.Stream.Client": {
+              "target": "Package",
+              "version": "[1.8.9, )"
             }
           },
           "imports": [

@@ -8,10 +8,30 @@
     ".NETCoreApp,Version=v9.0": {
       "Send/1.0.0": {
         "dependencies": {
-          "RabbitMQ.Client": "7.1.1"
+          "RabbitMQ.Client": "7.1.1",
+          "RabbitMQ.Stream.Client": "1.8.9"
         },
         "runtime": {
           "Send.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
         }
       },
       "RabbitMQ.Client/7.1.1": {
@@ -23,6 +43,18 @@
           "lib/net8.0/RabbitMQ.Client.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.1.1.0"
+          }
+        }
+      },
+      "RabbitMQ.Stream.Client/1.8.9": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "System.IO.Pipelines": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/RabbitMQ.Stream.Client.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.8.9.0"
           }
         }
       },
@@ -43,12 +75,33 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
+      "path": "microsoft.extensions.logging.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+    },
     "RabbitMQ.Client/7.1.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-WggKwAQqPyV3h4RADfWgHA8LuVQkOgkh335rn578JZI6BDH8Z1ICztY32vr57NlhbN3eELPjLerPK3P+O/w/Yw==",
       "path": "rabbitmq.client/7.1.1",
       "hashPath": "rabbitmq.client.7.1.1.nupkg.sha512"
+    },
+    "RabbitMQ.Stream.Client/1.8.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dSc9JyHOhqLUeesSLDCrATHBle8pccmYAhxEpdp+9AaOst87n5ELW+4AjIjjKZgeYjIdVSE+JFTnGL9+9S205w==",
+      "path": "rabbitmq.stream.client/1.8.9",
+      "hashPath": "rabbitmq.stream.client.1.8.9.nupkg.sha512"
     },
     "System.IO.Pipelines/8.0.0": {
       "type": "package",

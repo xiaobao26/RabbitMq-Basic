@@ -1,24 +1,35 @@
 ﻿using System.Text;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
+using RabbitMQ.Stream.Client;
+using RabbitMQ.Stream.Client.Reliable;
 
-var factory = new ConnectionFactory() { HostName = "localhost" };
-using var connection = await factory.CreateConnectionAsync();
-using var channel = await connection.CreateChannelAsync();
 
-await channel.QueueDeclareAsync(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
+var streamSystem = await StreamSystem.Create(new StreamSystemConfig());
+var stream = "stream-offset-tracking-dotnet";
+await streamSystem.CreateStream(new StreamSpec(stream));
 
-Console.WriteLine(" [*] Waiting for messages.");
-
-var consumer = new AsyncEventingBasicConsumer(channel);
-consumer.ReceivedAsync += (model, ea) =>
+// IOffsetType offsetSpecification = new OffsetTypeFirst();
+IOffsetType offsetSpecification = new OffsetTypeNext();
+ulong initialValue = UInt64.MaxValue;
+ulong firstOffset = initialValue;
+ulong lastOffset = initialValue;
+var consumedCde = new CountdownEvent(1);
+var consumer = await Consumer.Create(new ConsumerConfig(streamSystem, stream)
 {
-    var body = ea.Body.ToArray();
-    var message = Encoding.UTF8.GetString(body);
-    Console.WriteLine($" [x] Received {message}" );
-    return Task.CompletedTask;
-};
+    OffsetSpec = offsetSpecification,
+    MessageHandler = async (_, consumer, context, message) => {
+        if (Interlocked.CompareExchange(ref firstOffset, context.Offset, initialValue) == initialValue) {
+            Console.WriteLine("First message received.");
+        }
+        if ("marker".Equals(Encoding.UTF8.GetString(message.Data.Contents))) {
+            Interlocked.Exchange(ref lastOffset, context.Offset);
+            await consumer.Close();
+            consumedCde.Signal();
+        }
+        await Task.CompletedTask;
+    }
+});
+Console.WriteLine("Started consuming...");
 
-await channel.BasicConsumeAsync(queue: "hello", autoAck: true, consumer: consumer);
-Console.WriteLine(" Press [enter] to exit.");
-Console.ReadLine();
+consumedCde.Wait();
+Console.WriteLine("Done consuming, first offset {0}, last offset {1}.", firstOffset, lastOffset);
+await streamSystem.Close();
