@@ -141,11 +141,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/xuexiaobao/Desktop/Backend-dotnet/Receive/Receive.csproj",
+      "projectUniqueName": "/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/Receive.csproj",
       "projectName": "Receive",
-      "projectPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/Receive/Receive.csproj",
+      "projectPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/Receive.csproj",
       "packagesPath": "/Users/xuexiaobao/.nuget/packages/",
-      "outputPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/Receive/obj/",
+      "outputPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Receive/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/xuexiaobao/.nuget/NuGet/NuGet.Config"

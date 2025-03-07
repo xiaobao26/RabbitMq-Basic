@@ -141,11 +141,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/xuexiaobao/Desktop/Backend-dotnet/Send/Send.csproj",
+      "projectUniqueName": "/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/Send.csproj",
       "projectName": "Send",
-      "projectPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/Send/Send.csproj",
+      "projectPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/Send.csproj",
       "packagesPath": "/Users/xuexiaobao/.nuget/packages/",
-      "outputPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/Send/obj/",
+      "outputPath": "/Users/xuexiaobao/Desktop/Backend-dotnet/RabbitMq-Basic/Send/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/xuexiaobao/.nuget/NuGet/NuGet.Config"
